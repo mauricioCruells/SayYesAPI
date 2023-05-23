@@ -1,0 +1,8 @@
+# exclude hidden dirs .git etc.
+.*
+*.iml
+# exclude build binaries
+build/*
+target
+# except files for docker
+!build/docker
