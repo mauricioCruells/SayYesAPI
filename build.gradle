@@ -9,6 +9,15 @@ group = 'com.cruellsdev'
 version = scmVersion.version
 sourceCompatibility = '17'
 
+scmVersion {
+    useHighestVersion.set(true)
+	branchVersionIncrementer.putAll( [
+        'feature/.*' : 'incrementMinor',
+        'bugfix/.*' : { c -> c.currentVersion.incrementPatchVersion() },
+		'release': ['incrementPrerelease', [initialPreReleaseIfNotOnPrerelease: 'rc1']] 
+    ])
+}
+
 configurations {
 	compileOnly {
 		extendsFrom annotationProcessor
